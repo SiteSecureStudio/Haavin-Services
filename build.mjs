@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const dist = resolve(root, "dist");
+const publicDir = resolve(root, "public");
 
 const imageFiles = [
   {
@@ -93,6 +94,15 @@ await writeFile(resolve(dist, "server/index.js"), worker);
 await copyFile(
   resolve(root, ".openai/hosting.json"),
   resolve(dist, ".openai/hosting.json"),
+);
+
+await rm(publicDir, { recursive: true, force: true });
+await mkdir(resolve(publicDir, "brand-assests"), { recursive: true });
+await writeFile(resolve(publicDir, "index.html"), html);
+await Promise.all(
+  imageFiles.map(({ source }) =>
+    copyFile(resolve(root, source), resolve(publicDir, source)),
+  ),
 );
 
 console.log("Built Haavin Services for deployment.");
