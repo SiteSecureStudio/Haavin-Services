@@ -413,11 +413,12 @@ body.menu-open .mobile-menu{transform:none;visibility:visible}
 .person{background:#fff;border-radius:var(--r-lg);padding:30px 28px;box-shadow:inset 0 0 0 1px var(--line-light);transition:transform .4s var(--ease),box-shadow .4s}
 .person:hover{transform:translateY(-6px);box-shadow:var(--shadow-1)}
 .person--lead{background:var(--forest);color:var(--cream);box-shadow:none}
-.person__avatar{width:66px;height:66px;border-radius:16px;display:grid;place-items:center;font-family:"Bricolage Grotesque";font-weight:700;font-size:24px;margin-bottom:20px;letter-spacing:-.02em}
-.person__avatar--a{background:var(--mint);color:var(--emerald)}
-.person__avatar--b{background:var(--mint);color:var(--emerald)}
-.person__avatar--c{background:var(--mint);color:var(--emerald)}
-.person--lead .person__avatar--a{background:var(--lime);color:var(--forest)}
+.person__avatar{width:66px;height:66px;border-radius:16px;margin-bottom:20px;overflow:hidden;background:var(--mint);box-shadow:0 0 0 1px var(--mint-line)}
+.person__avatar img{width:100%;height:100%;display:block;object-fit:cover}
+.person__avatar--a img{object-position:50% 18%;transform:scale(1.22);transform-origin:50% 31%}
+.person__avatar--b img{object-position:50% 28%;transform:scale(1.7);transform-origin:40% 38%}
+.person__avatar--c img{object-position:50% 16%;transform:scale(1.32);transform-origin:50% 28%}
+.person--lead .person__avatar--a{box-shadow:0 0 0 3px rgba(139,216,0,.45)}
 .person__role{font-family:"Space Mono";font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--leaf);margin-bottom:6px}
 .person--lead .person__role{color:var(--lime)}
 .person h3{font-size:22px;margin-bottom:14px;color:var(--forest)}
@@ -1065,20 +1066,26 @@ body.menu-open .mobile-menu{transform:none;visibility:visible}
     </div>
     <div class="team-grid">
       <article class="person person--lead reveal">
-        <div class="person__avatar person__avatar--a">R</div>
+        <div class="person__avatar person__avatar--a">
+          <img src="brand-assests/renukamala.jpeg" alt="Renukamala" width="565" height="1080" loading="lazy" decoding="async">
+        </div>
         <div class="person__role">Founder &amp; Chief Executive Officer</div>
         <h3>Renukamala</h3>
         <p>More than 20 years in waste management, leading major commercial and industrial projects across the Klang Valley with a focus on regulatory compliance, operational efficiency and sustainable solutions. Founded Haavin in 2010.</p>
         <div class="person__quote">"Sustainable waste management is not just a service. It is our responsibility to the next generation."</div>
       </article>
       <article class="person reveal d1">
-        <div class="person__avatar person__avatar--b">AA</div>
+        <div class="person__avatar person__avatar--b">
+          <img src="brand-assests/ameer.jpeg" alt="Ameer Asyraf" width="810" height="1080" loading="lazy" decoding="async">
+        </div>
         <div class="person__role">Director, Commercial &amp; Support</div>
         <h3>Ameer Asyraf</h3>
         <p>A decade-plus in the industry. Ameer handles client coordination, contracts and quotations, and owns the customer service workflow, billing and communication standards, so clients get one consistent point of contact for the life of an engagement.</p>
       </article>
       <article class="person reveal d2">
-        <div class="person__avatar person__avatar--c">SN</div>
+        <div class="person__avatar person__avatar--c">
+          <img src="brand-assests/sutha%20director.jpg" alt="Sutha Nair" width="768" height="1024" loading="lazy" decoding="async">
+        </div>
         <div class="person__role">Director, Operations &amp; Service Delivery</div>
         <h3>Sutha Nair</h3>
         <p>15+ years in the field, starting as an accounts assistant in a local cleaning and solid waste company. Holds a Diploma in Private Secretaryship and a City &amp; Guilds certificate. Known for building close relationships across management and operational teams.</p>
