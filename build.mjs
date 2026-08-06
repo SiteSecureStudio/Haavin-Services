@@ -18,13 +18,45 @@ const imageFiles = [
     contentType: "image/jpeg",
   },
   {
-    pathname: "/brand-assests/sutha director.jpg",
-    source: "brand-assests/sutha director.jpg",
+    pathname: "/brand-assests/sutha-nair.jpg",
+    source: "brand-assests/sutha-nair.jpg",
     contentType: "image/jpeg",
+  },
+  {
+    pathname: "/og-image.jpg",
+    source: "og-image.jpg",
+    contentType: "image/jpeg",
+  },
+  {
+    pathname: "/apple-touch-icon.png",
+    source: "apple-touch-icon.png",
+    contentType: "image/png",
+  },
+];
+
+// Plain-text files search engines look for at fixed paths.
+const textFiles = [
+  {
+    pathname: "/robots.txt",
+    source: "robots.txt",
+    contentType: "text/plain; charset=utf-8",
+  },
+  {
+    pathname: "/sitemap.xml",
+    source: "sitemap.xml",
+    contentType: "application/xml; charset=utf-8",
   },
 ];
 
 const html = await readFile(resolve(root, "index.html"), "utf8");
+const texts = Object.fromEntries(
+  await Promise.all(
+    textFiles.map(async ({ pathname, source, contentType }) => [
+      pathname,
+      { body: await readFile(resolve(root, source), "utf8"), contentType },
+    ]),
+  ),
+);
 const images = Object.fromEntries(
   await Promise.all(
     imageFiles.map(async ({ pathname, source, contentType }) => [
@@ -39,6 +71,7 @@ const images = Object.fromEntries(
 
 const worker = `const html = ${JSON.stringify(html)};
 const images = ${JSON.stringify(images)};
+const texts = ${JSON.stringify(texts)};
 
 function decodeBase64(value) {
   const binary = atob(value);
@@ -65,6 +98,16 @@ export default {
         headers: {
           "content-type": "text/html; charset=utf-8",
           "cache-control": "public, max-age=300",
+        },
+      });
+    }
+
+    const text = texts[pathname];
+    if (text) {
+      return new Response(request.method === "HEAD" ? null : text.body, {
+        headers: {
+          "content-type": text.contentType,
+          "cache-control": "public, max-age=3600",
         },
       });
     }
@@ -99,10 +142,13 @@ await copyFile(
 await rm(publicDir, { recursive: true, force: true });
 await mkdir(resolve(publicDir, "brand-assests"), { recursive: true });
 await writeFile(resolve(publicDir, "index.html"), html);
-await Promise.all(
-  imageFiles.map(({ source }) =>
+await Promise.all([
+  ...imageFiles.map(({ source }) =>
     copyFile(resolve(root, source), resolve(publicDir, source)),
   ),
-);
+  ...textFiles.map(({ source }) =>
+    copyFile(resolve(root, source), resolve(publicDir, source)),
+  ),
+]);
 
 console.log("Built Haavin Services for deployment.");
