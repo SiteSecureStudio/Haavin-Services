@@ -28,6 +28,21 @@ const imageFiles = [
     contentType: "image/jpeg",
   },
   {
+    pathname: "/favicon.png",
+    source: "favicon.png",
+    contentType: "image/png",
+  },
+  {
+    pathname: "/logo.png",
+    source: "logo.png",
+    contentType: "image/png",
+  },
+  {
+    pathname: "/brand-assests/logo-mark.png",
+    source: "brand-assests/logo-mark.png",
+    contentType: "image/png",
+  },
+  {
     pathname: "/apple-touch-icon.png",
     source: "apple-touch-icon.png",
     contentType: "image/png",

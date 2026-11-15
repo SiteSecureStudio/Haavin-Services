@@ -42,7 +42,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23FFFFFF'/><path d='M50 22c-9 6-9 16 0 22 9-6 9-16 0-22z' fill='%234CA405'/><path d='M50 44v34M50 58l-12 8M50 64l12 8' stroke='%232E8B37' stroke-width='4' stroke-linecap='round' fill='none'/></svg>">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -66,6 +66,9 @@
       "description": "Structured waste collection, RORO bins, recycling and F&B hygiene support across the Klang Valley. SWCorp, CIDB G3 and MOF licensed. Book a bin online.",
       "isPartOf": { "@id": "https://www.haavinservices.my/#website" },
       "about": { "@id": "https://www.haavinservices.my/#organization" },
+      "primaryImageOfPage": { "@id": "https://www.haavinservices.my/#logo" },
+      "image": { "@id": "https://www.haavinservices.my/#logo" },
+      "thumbnailUrl": "https://www.haavinservices.my/logo.png",
       "inLanguage": "en-MY"
     },
     {
@@ -77,7 +80,12 @@
       "image": "https://www.haavinservices.my/og-image.jpg",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.haavinservices.my/apple-touch-icon.png"
+        "@id": "https://www.haavinservices.my/#logo",
+        "url": "https://www.haavinservices.my/logo.png",
+        "contentUrl": "https://www.haavinservices.my/logo.png",
+        "width": 800,
+        "height": 800,
+        "caption": "Haavin Services logo"
       },
       "description": "Waste management contractor providing scheduled collection and hauling, RORO bins, recycling and resource recovery, and cleaning and F&B hygiene services to property, commercial, industrial and construction sites across the Klang Valley.",
       "foundingDate": "2010",
@@ -739,7 +747,7 @@ body.menu-open .mobile-menu{transform:none;visibility:visible}
   <div class="hero__grid"></div>
   <div class="wrap hero__inner">
     <div class="hero__stagger">
-      <span class="logo-img hero__logo" role="img" aria-label="Haavin Services logo"></span>
+      <img class="hero__logo" src="brand-assests/logo-mark.png" alt="Haavin Services logo" width="400" height="400" style="display:inline-block" decoding="async">
       <span class="eyebrow hero__eyebrow">SWCORP · CIDB G3 · MOF LICENSED</span>
       <h1>Klang Valley waste<br>management,<br><span class="accent">on schedule.</span></h1>
       <p class="hero__lead">Fifteen years of structured collection for property managers, commercial buildings and industrial sites across the Klang Valley. One disciplined operator. One named supervisor. Every pickup accounted for.</p>
